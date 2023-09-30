@@ -5,6 +5,8 @@ import com.piotrgrochowiecki.carpositioningwebservice.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 /**
  * Car service implementation
  */
@@ -21,6 +23,11 @@ public class CarServiceImpl implements CarService {
     @Override
     public void add(Car car) {
         carRepository.save(car);
+    }
+
+    @Override
+    public Optional<Car> getByUuid(String uuid) {
+        return carRepository.findCarByUuid(uuid);
     }
 
 }
