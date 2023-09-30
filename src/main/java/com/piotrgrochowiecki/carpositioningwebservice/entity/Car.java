@@ -1,8 +1,6 @@
 package com.piotrgrochowiecki.carpositioningwebservice.entity;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import lombok.*;
 import jakarta.persistence.*;
 import lombok.experimental.FieldDefaults;
@@ -15,20 +13,19 @@ import java.util.List;
 @Entity
 @Data
 @Builder
-@EqualsAndHashCode(of = "id")
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Car {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    String uuid;
 
     String brand;
 
     String model;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "car")
     List<Position> positionList;
 
