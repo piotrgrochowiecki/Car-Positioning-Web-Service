@@ -1,4 +1,4 @@
-package com.piotrgrochowiecki.carpositioningwebservice.entity;
+package com.piotrgrochowiecki.carpositioningwebservice.data.entity;
 
 import jakarta.persistence.Entity;
 import lombok.*;
@@ -7,16 +7,14 @@ import lombok.experimental.FieldDefaults;
 
 import java.util.List;
 
-/**
- * Car entity
- */
 @Entity
 @Data
 @Builder
+@Table(name = "car")
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Car {
+public class CarEntity {
 
     @Id
     String uuid;
@@ -26,7 +24,7 @@ public class Car {
     String model;
 
     @ToString.Exclude
-    @OneToMany(mappedBy = "car")
-    List<Position> positionList;
+    @OneToMany(mappedBy = "carEntity")
+    List<PositionEntity> positionEntityList;
 
 }

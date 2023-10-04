@@ -1,4 +1,4 @@
-package com.piotrgrochowiecki.carpositioningwebservice.entity;
+package com.piotrgrochowiecki.carpositioningwebservice.data.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -7,17 +7,15 @@ import lombok.experimental.FieldDefaults;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-/**
- * Position entity
- */
 @Entity
 @Data
 @Builder
+@Table(name = "position")
 @EqualsAndHashCode(of = "id")
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Position {
+public class PositionEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,6 +30,6 @@ public class Position {
     Double latitude;
 
     @ManyToOne
-    Car car;
+    CarEntity carEntity;
 
 }
