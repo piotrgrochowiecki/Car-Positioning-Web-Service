@@ -1,7 +1,7 @@
 package com.piotrgrochowiecki.carpositioningwebservice.domain.service;
 
-import com.piotrgrochowiecki.carpositioningwebservice.domain.model.Car;
 import com.piotrgrochowiecki.carpositioningwebservice.domain.model.Position;
+import com.piotrgrochowiecki.carpositioningwebservice.domain.repository.PositionRepository;
 import com.piotrgrochowiecki.carpositioningwebservice.domain.service.supplier.GeoDataSupplier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,23 +13,26 @@ import java.time.LocalTime;
 public class PositionService {
 
     private final GeoDataSupplier geoDataSupplier;
-    private final CarService carService;
+
+    private final PositionRepository positionRepository;
 
     @Autowired
-    public PositionService(GeoDataSupplier geoDataSupplier, CarService carService) {
+    public PositionService(GeoDataSupplier geoDataSupplier, PositionRepository positionRepository) {
         this.geoDataSupplier = geoDataSupplier;
-        this.carService = carService;
+        this.positionRepository = positionRepository;
     }
 
-    public Position getCurrentPositionOfACarByUuid(String uuid) {
-        Car car = carService.getByUuid(uuid);
-        return Position.builder()
-                .car(car)
+    public Position getCurrentPositionOfACarByUuidAndSaveIt(String uuid) {
+        Position position = Position.builder()
                 .latitude(geoDataSupplier.randomLatitudeSupplier.get())
                 .longitude(geoDataSupplier.randomLongitudeSupplier.get())
                 .time(LocalTime.now())
                 .date(LocalDate.now())
+                .carsUuid(uuid)
                 .build();
+
+        positionRepository.save(position);
+        return position;
     }
 
 }

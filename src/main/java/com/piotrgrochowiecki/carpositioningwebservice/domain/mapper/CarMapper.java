@@ -46,6 +46,7 @@ public class CarMapper {
 
     Function<PositionEntity, Position> positionEntityToModelFunction = positionEntity -> Position.builder()
             .id(positionEntity.getId())
+            .carsUuid(positionEntity.getCarEntity().getUuid())
             .time(positionEntity.getTime())
             .date(positionEntity.getDate())
             .longitude(positionEntity.getLongitude())

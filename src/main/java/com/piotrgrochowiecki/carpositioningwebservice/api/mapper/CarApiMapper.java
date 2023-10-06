@@ -26,6 +26,7 @@ public class CarApiMapper {
 
     Function<PositionDto, Position> positionDtoToDomainFunction = position -> Position.builder()
             .id(position.id())
+            .carsUuid(position.carsUuid())
             .time(position.time())
             .date(position.date())
             .longitude(position.longitude())
@@ -46,6 +47,7 @@ public class CarApiMapper {
 
     Function<Position, PositionDto> positionDomainToDtoFunction = position -> PositionDto.builder()
             .id(position.id())
+            .carsUuid(position.carsUuid())
             .time(position.time())
             .date(position.date())
             .longitude(position.longitude())

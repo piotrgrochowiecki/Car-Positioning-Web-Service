@@ -7,6 +7,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Builder
-public record PositionDto(Long id, LocalDate date, LocalTime time, Double longitude, Double latitude, CarDto carDto) {
+public record PositionDto(Long id, String carsUuid, LocalDate date, LocalTime time, Double longitude, Double latitude) {
 
 }
