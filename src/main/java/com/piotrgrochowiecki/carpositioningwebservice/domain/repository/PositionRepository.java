@@ -19,7 +19,7 @@ public class PositionRepository {
         this.positionMapper = positionMapper;
     }
 
-    public void add(Position position) {
+    public void save(Position position) {
         positionCRUDRepository.save(positionMapper.mapModelToEntity(position));
     }
 
