@@ -11,4 +11,6 @@ public interface CarCRUDRepository extends CrudRepository<CarEntity, Long> {
 
     Optional<CarEntity> findCarByUuid(String uuid);
 
+    boolean existsByUuid(String uuid);
+
 }
