@@ -41,7 +41,7 @@ class PositionApiMapperTest {
                 .build();
 
         //when
-        Position result = positionApiMapper.mapDtoToDomain(positionDto);
+        Position result = positionApiMapper.mapToDomain(positionDto);
 
         //then
         assertThat(result).isEqualTo(position);
@@ -67,7 +67,7 @@ class PositionApiMapperTest {
                 .build();
 
         //when
-        PositionDto result = positionApiMapper.mapDomainToDto(position);
+        PositionDto result = positionApiMapper.mapToDto(position);
 
         //then
         assertThat(result).isEqualTo(positionDto);
