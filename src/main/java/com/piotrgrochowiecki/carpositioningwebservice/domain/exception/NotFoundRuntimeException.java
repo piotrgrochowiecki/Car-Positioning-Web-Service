@@ -1,9 +1,8 @@
 package com.piotrgrochowiecki.carpositioningwebservice.domain.exception;
 
-public class NotFoundException extends RuntimeException {
+public class NotFoundRuntimeException extends RuntimeException {
 
-    public NotFoundException(String objectType, String id) {
+    public NotFoundRuntimeException(ObjectType objectType, String id) {
         super("Could not find " + objectType + " with id " + id);
     }
-
 }

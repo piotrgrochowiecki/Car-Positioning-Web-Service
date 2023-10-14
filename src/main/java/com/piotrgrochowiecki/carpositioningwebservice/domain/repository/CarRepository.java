@@ -2,7 +2,8 @@ package com.piotrgrochowiecki.carpositioningwebservice.domain.repository;
 
 import com.piotrgrochowiecki.carpositioningwebservice.data.entity.CarEntity;
 import com.piotrgrochowiecki.carpositioningwebservice.data.repository.CarCRUDRepository;
-import com.piotrgrochowiecki.carpositioningwebservice.domain.exception.NotFoundException;
+import com.piotrgrochowiecki.carpositioningwebservice.domain.exception.NotFoundRuntimeException;
+import com.piotrgrochowiecki.carpositioningwebservice.domain.exception.ObjectType;
 import com.piotrgrochowiecki.carpositioningwebservice.domain.mapper.CarMapper;
 import com.piotrgrochowiecki.carpositioningwebservice.domain.model.Car;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +25,9 @@ public class CarRepository {
         this.carMapper = carMapper;
     }
 
-    public Car findByUuid(@Nullable String uuid) throws NotFoundException {
+    public Car findByUuid(@Nullable String uuid) throws NotFoundRuntimeException {
         Optional<CarEntity> optionalCarEntity = carCRUDRepository.findCarByUuid(uuid);
-        CarEntity carEntity = optionalCarEntity.orElseThrow(() -> new NotFoundException("Car", uuid));
+        CarEntity carEntity = optionalCarEntity.orElseThrow(() -> new NotFoundRuntimeException(ObjectType.CAR, uuid));
         return carMapper.mapEntityToModel(carEntity);
     }
 
