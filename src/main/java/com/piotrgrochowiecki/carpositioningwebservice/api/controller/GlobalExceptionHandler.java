@@ -1,20 +1,25 @@
 package com.piotrgrochowiecki.carpositioningwebservice.api.controller;
 
-import com.piotrgrochowiecki.carpositioningwebservice.domain.exception.NotFoundException;
+import com.piotrgrochowiecki.carpositioningwebservice.api.dto.NotFoundRuntimeExceptionDto;
+import com.piotrgrochowiecki.carpositioningwebservice.domain.exception.NotFoundRuntimeException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.time.LocalDateTime;
+
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
     @ResponseBody
-    @ExceptionHandler(NotFoundException.class)
+    @ExceptionHandler(NotFoundRuntimeException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String handleNotFoundException(NotFoundException exception) {
-        return exception.getMessage();
+    public NotFoundRuntimeExceptionDto handleNotFoundException(NotFoundRuntimeException exception) {
+        return NotFoundRuntimeExceptionDto.builder()
+                .message(exception.getMessage())
+                .timeStamp(LocalDateTime.now())
+                .build();
     }
-
 }
