@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PositionRepository {
 
-    void save(Position position);
+    Long save(Position position);
 }

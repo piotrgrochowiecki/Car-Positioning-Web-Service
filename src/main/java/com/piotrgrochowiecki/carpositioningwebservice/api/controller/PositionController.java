@@ -3,7 +3,7 @@ package com.piotrgrochowiecki.carpositioningwebservice.api.controller;
 import com.piotrgrochowiecki.carpositioningwebservice.api.dto.PositionDto;
 import com.piotrgrochowiecki.carpositioningwebservice.api.mapper.PositionApiMapper;
 import com.piotrgrochowiecki.carpositioningwebservice.domain.exception.NotFoundRuntimeException;
-import com.piotrgrochowiecki.carpositioningwebservice.domain.exception.ObjectType;
+import com.piotrgrochowiecki.carpositioningwebservice.domain.model.Position;
 import com.piotrgrochowiecki.carpositioningwebservice.domain.service.PositionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.lang.Nullable;
@@ -28,10 +28,9 @@ public class PositionController {
      * @throws NotFoundRuntimeException when no car with given uuid has been found
      */
     @GetMapping("current/{uuid}")
-    public PositionDto getCurrentPositionOfACarByUuidAndSaveIt(@PathVariable @Nullable String uuid) throws NotFoundRuntimeException {
-        return positionService.getCurrentPositionOfACarByUuidAndSaveIt(uuid)
-                .map(positionApiMapper::mapToDto)
-                .orElseThrow(() -> new NotFoundRuntimeException(ObjectType.CAR, uuid));
+    public PositionDto getCurrentPositionOfACarByUuidAndSaveIt(@PathVariable @Nullable String uuid) {
+        Position position = positionService.getCurrentPositionOfACarByUuidAndSaveIt(uuid);
+        return positionApiMapper.mapToDto(position);
     }
     //TODO teoretycznie GETem nie powinniśmy jeszcze czegoś zapisywać czego
     //TODO aktualizacja pozycji może działać metodą PUT

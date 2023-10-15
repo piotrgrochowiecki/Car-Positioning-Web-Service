@@ -14,8 +14,9 @@ public class PositionEntityRepository implements PositionRepository {
     private final PositionCRUDRepository positionCRUDRepository;
     private final PositionMapper positionMapper;
 
-    public void save(Position position){
+    public Long save(Position position){
         positionCRUDRepository.save(positionMapper.mapToEntity(position));
+        return position.id();
     }
 
 

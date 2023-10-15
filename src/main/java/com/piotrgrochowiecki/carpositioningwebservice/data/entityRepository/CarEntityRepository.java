@@ -31,10 +31,11 @@ public class CarEntityRepository implements CarRepository {
         return carCRUDRepository.existsByUuid(uuid);
     }
 
-    public void save(@Nullable Car car) {
+    public String save(@Nullable Car car) {
         assert car != null;
         CarEntity carEntity = carMapper.mapToEntity(car);
         carCRUDRepository.save(carEntity);
+        return carEntity.getUuid();
     }
 
 }

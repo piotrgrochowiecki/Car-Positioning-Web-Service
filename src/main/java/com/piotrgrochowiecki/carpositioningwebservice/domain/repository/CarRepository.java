@@ -11,6 +11,6 @@ public interface CarRepository {
 
     boolean existsByUuid(@Nullable String uuid);
 
-    void save(Car car);
+    String save(Car car);
 
 }
