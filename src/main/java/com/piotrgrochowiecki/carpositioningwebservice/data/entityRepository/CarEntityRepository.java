@@ -4,7 +4,7 @@ import com.piotrgrochowiecki.carpositioningwebservice.data.entity.CarEntity;
 import com.piotrgrochowiecki.carpositioningwebservice.data.repository.CarCRUDRepository;
 import com.piotrgrochowiecki.carpositioningwebservice.domain.exception.NotFoundRuntimeException;
 import com.piotrgrochowiecki.carpositioningwebservice.domain.exception.ObjectType;
-import com.piotrgrochowiecki.carpositioningwebservice.domain.mapper.CarMapper;
+import com.piotrgrochowiecki.carpositioningwebservice.data.mapper.CarMapper;
 import com.piotrgrochowiecki.carpositioningwebservice.domain.model.Car;
 import com.piotrgrochowiecki.carpositioningwebservice.domain.repository.CarRepository;
 import lombok.AllArgsConstructor;
@@ -24,7 +24,7 @@ public class CarEntityRepository implements CarRepository {
     public Car findByUuid(@Nullable String uuid) {
         Optional<CarEntity> optionalCarEntity = carCRUDRepository.findCarByUuid(uuid);
         CarEntity carEntity = optionalCarEntity.orElseThrow(() -> new NotFoundRuntimeException(ObjectType.CAR, uuid));
-        return carMapper.mapEntityToModel(carEntity);
+        return carMapper.mapToModel(carEntity);
     }
 
     public boolean existsByUuid(@Nullable String uuid) {
@@ -33,7 +33,7 @@ public class CarEntityRepository implements CarRepository {
 
     public void save(@Nullable Car car) {
         assert car != null;
-        CarEntity carEntity = carMapper.mapModelToEntity(car);
+        CarEntity carEntity = carMapper.mapToEntity(car);
         carCRUDRepository.save(carEntity);
     }
 
