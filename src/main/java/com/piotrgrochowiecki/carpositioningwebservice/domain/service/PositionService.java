@@ -12,6 +12,10 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
 @Service
 @AllArgsConstructor
@@ -39,5 +43,26 @@ public class PositionService {
                 .carsUuid(uuid)
                 .build();
     }
+
+    //TODO zaimplementować zapisywanie pozycji wygenerowanej dla każdego samochodu w stałych odstępach czasowych. Przykład:
+
+//    public class ScheduledTaskExample {
+//
+//        private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+//
+//        public void startScheduleTask() {
+//            final Runnable task = new Runnable() {
+//                public void run() {
+//                    // call service method here
+//                    saveRecordToDatabase();
+//                }
+//            };
+//            final ScheduledFuture<?> taskHandle = scheduler.scheduleAtFixedRate(task, 0, 15, TimeUnit.MINUTES);
+//        }
+//
+//        private void saveRecordToDatabase() {
+//            // implementation of database save operation
+//        }
+//    }
 
 }

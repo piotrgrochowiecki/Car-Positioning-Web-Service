@@ -32,8 +32,6 @@ public class PositionController {
         Position position = positionService.getCurrentPositionOfACarByUuidAndSaveIt(uuid);
         return positionApiMapper.mapToDto(position);
     }
-    //TODO teoretycznie GETem nie powinniśmy jeszcze czegoś zapisywać czego
-    //TODO aktualizacja pozycji może działać metodą PUT
-    //TODO pomyśleć nad przerobieniem tego
+    //TODO teoretycznie GETem nie powinniśmy jeszcze czegoś zapisywać czego: ta metoda powinna tylko pobierać najnowszą dostępną pozycję samochodu.
 
 }
