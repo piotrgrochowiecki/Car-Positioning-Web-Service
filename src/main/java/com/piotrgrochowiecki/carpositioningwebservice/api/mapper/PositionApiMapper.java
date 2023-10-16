@@ -2,21 +2,13 @@ package com.piotrgrochowiecki.carpositioningwebservice.api.mapper;
 
 import com.piotrgrochowiecki.carpositioningwebservice.api.dto.PositionDto;
 import com.piotrgrochowiecki.carpositioningwebservice.domain.model.Position;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
 @Component
 public class PositionApiMapper {
 
-    private final CarApiMapper carMapper;
-
-    @Autowired
-    public PositionApiMapper(CarApiMapper carMapper) {
-        this.carMapper = carMapper;
-    }
-
-    public Position mapDtoToDomain(PositionDto positionDto) {
+    public Position mapToDomain(PositionDto positionDto) {
         return Position.builder()
                 .carsUuid(positionDto.carsUuid())
                 .time(positionDto.time())
@@ -26,8 +18,7 @@ public class PositionApiMapper {
                 .build();
     }
 
-
-    public PositionDto mapDomainToDto(Position position) {
+    public PositionDto mapToDto(Position position) {
         return PositionDto.builder()
                 .id(position.id())
                 .carsUuid(position.carsUuid())

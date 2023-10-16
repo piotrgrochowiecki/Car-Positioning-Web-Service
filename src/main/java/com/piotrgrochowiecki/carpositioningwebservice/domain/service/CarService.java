@@ -1,27 +1,23 @@
 package com.piotrgrochowiecki.carpositioningwebservice.domain.service;
 
-import com.piotrgrochowiecki.carpositioningwebservice.domain.exception.NotFoundException;
 import com.piotrgrochowiecki.carpositioningwebservice.domain.model.Car;
 import com.piotrgrochowiecki.carpositioningwebservice.domain.repository.CarRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 
 @Service
+@AllArgsConstructor
 public class CarService {
 
     final private CarRepository carRepository;
 
-    @Autowired
-    public CarService(CarRepository carRepository) {
-        this.carRepository = carRepository;
-    }
-
-    public void add(Car car) {
+    public String add(Car car) {
         carRepository.save(car);
+        return car.uuid();
     }
 
-    public Car getByUuid(String uuid) throws NotFoundException {
+    public Car getByUuid(String uuid) {
         return carRepository.findByUuid(uuid);
     }
 

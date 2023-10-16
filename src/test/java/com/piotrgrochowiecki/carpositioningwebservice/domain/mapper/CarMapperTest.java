@@ -2,6 +2,7 @@ package com.piotrgrochowiecki.carpositioningwebservice.domain.mapper;
 
 import com.piotrgrochowiecki.carpositioningwebservice.data.entity.CarEntity;
 import com.piotrgrochowiecki.carpositioningwebservice.data.entity.PositionEntity;
+import com.piotrgrochowiecki.carpositioningwebservice.data.mapper.CarMapper;
 import com.piotrgrochowiecki.carpositioningwebservice.domain.model.Car;
 import com.piotrgrochowiecki.carpositioningwebservice.domain.model.Position;
 import org.junit.jupiter.api.Test;
@@ -60,7 +61,7 @@ class CarMapperTest {
                 .build();
 
         //when
-        CarEntity result = carMapper.mapModelToEntity(car);
+        CarEntity result = carMapper.mapToEntity(car);
 
         //then
         assertThat(result).isEqualTo(carEntity);
@@ -102,7 +103,7 @@ class CarMapperTest {
                 .build();
 
         //when
-        Car result = carMapper.mapEntityToModel(carEntity);
+        Car result = carMapper.mapToModel(carEntity);
 
         //then
         assertThat(result).isEqualTo(car);

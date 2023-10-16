@@ -10,13 +10,17 @@ import java.util.List;
 @Entity
 @Data
 @Builder
-@Table(name = "car")
+@Table(name = "car",
+       uniqueConstraints = @UniqueConstraint(columnNames = "uuid"))
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class CarEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
+
     String uuid;
 
     String brand;

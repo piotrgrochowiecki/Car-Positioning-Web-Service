@@ -58,7 +58,7 @@ class CarApiMapperTest {
                 .build();
 
         //when
-        Car result = carApiMapper.mapDtoToDomain(carDto);
+        Car result = carApiMapper.mapToDomain(carDto);
 
         //then
         assertThat(result).isEqualTo(car);
@@ -98,7 +98,7 @@ class CarApiMapperTest {
                 .build();
 
         //when
-        CarDto result = carApiMapper.mapDomainToDto(car);
+        CarDto result = carApiMapper.mapToDto(car);
 
         //then
         assertThat(result).isEqualTo(carDto);
