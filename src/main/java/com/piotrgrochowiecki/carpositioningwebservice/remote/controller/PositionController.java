@@ -1,7 +1,7 @@
-package com.piotrgrochowiecki.carpositioningwebservice.api.controller;
+package com.piotrgrochowiecki.carpositioningwebservice.remote.controller;
 
-import com.piotrgrochowiecki.carpositioningwebservice.api.dto.PositionDto;
-import com.piotrgrochowiecki.carpositioningwebservice.api.mapper.PositionApiMapper;
+import com.piotrgrochowiecki.carpositioningwebservice.remote.dto.PositionDto;
+import com.piotrgrochowiecki.carpositioningwebservice.remote.mapper.PositionApiMapper;
 import com.piotrgrochowiecki.carpositioningwebservice.domain.exception.NotFoundRuntimeException;
 import com.piotrgrochowiecki.carpositioningwebservice.domain.model.Position;
 import com.piotrgrochowiecki.carpositioningwebservice.domain.service.PositionService;

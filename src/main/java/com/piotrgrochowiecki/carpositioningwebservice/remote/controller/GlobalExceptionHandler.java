@@ -1,6 +1,6 @@
-package com.piotrgrochowiecki.carpositioningwebservice.api.controller;
+package com.piotrgrochowiecki.carpositioningwebservice.remote.controller;
 
-import com.piotrgrochowiecki.carpositioningwebservice.api.dto.NotFoundRuntimeExceptionDto;
+import com.piotrgrochowiecki.carpositioningwebservice.remote.dto.NotFoundRuntimeExceptionDto;
 import com.piotrgrochowiecki.carpositioningwebservice.domain.exception.NotFoundRuntimeException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;

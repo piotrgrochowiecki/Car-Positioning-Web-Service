@@ -1,6 +1,6 @@
-package com.piotrgrochowiecki.carpositioningwebservice.api.mapper;
+package com.piotrgrochowiecki.carpositioningwebservice.remote.mapper;
 
-import com.piotrgrochowiecki.carpositioningwebservice.api.dto.PositionDto;
+import com.piotrgrochowiecki.carpositioningwebservice.remote.dto.PositionDto;
 import com.piotrgrochowiecki.carpositioningwebservice.domain.model.Position;
 import org.springframework.stereotype.Component;
 

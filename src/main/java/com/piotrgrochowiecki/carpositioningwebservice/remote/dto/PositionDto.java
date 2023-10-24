@@ -1,4 +1,4 @@
-package com.piotrgrochowiecki.carpositioningwebservice.api.dto;
+package com.piotrgrochowiecki.carpositioningwebservice.remote.dto;
 
 
 import lombok.Builder;
